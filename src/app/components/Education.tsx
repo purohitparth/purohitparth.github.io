@@ -95,7 +95,7 @@ export default function Education() {
                 animate={inView ? "visible" : "hidden"}
                 variants={fadeUp}
                 custom={i + 1}
-                className="glass glass-hover rounded-2xl p-6 flex gap-5"
+                className="glass rounded-2xl p-6 flex gap-5"
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0"
@@ -134,7 +134,7 @@ export default function Education() {
                 animate={inView ? "visible" : "hidden"}
                 variants={fadeUp}
                 custom={i + 3}
-                className="glass glass-hover rounded-2xl p-5"
+                className="glass rounded-2xl p-5"
               >
                 <div className="flex items-start gap-4">
                   <div
