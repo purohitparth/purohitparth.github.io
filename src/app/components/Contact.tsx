@@ -15,43 +15,15 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
 }
 
 const contacts = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "parthpurohit215@gmail.com",
-    href: "mailto:parthpurohit215@gmail.com",
-    color: "#00d4ff",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "201-554-9891",
-    href: "tel:+12015549891",
-    color: "#6366f1",
-  },
-  {
-    icon: LinkedinIcon,
-    label: "LinkedIn",
-    value: "linkedin.com/in/purohitparth",
-    href: "https://www.linkedin.com/in/purohitparth/",
-    color: "#0ea5e9",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Tampa, FL 33619, USA",
-    href: null,
-    color: "#a855f7",
-  },
+  { icon: Mail,        label: "Email",    value: "parthpurohit215@gmail.com",    href: "mailto:parthpurohit215@gmail.com", color: "#00d4ff" },
+  { icon: Phone,       label: "Phone",    value: "201-554-9891",                  href: "tel:+12015549891",                 color: "#6366f1" },
+  { icon: LinkedinIcon,label: "LinkedIn", value: "linkedin.com/in/purohitparth",  href: "https://www.linkedin.com/in/purohitparth/", color: "#0ea5e9" },
+  { icon: MapPin,      label: "Location", value: "Tampa, FL 33619, USA",          href: null,                               color: "#a855f7" },
 ];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.1 },
-  }),
+  visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.55, delay: i * 0.1 } }),
 };
 
 export default function Contact() {
@@ -59,40 +31,37 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="contact" className="py-28" style={{ background: "#05090f" }}>
+    <section id="contact" className="py-16" style={{ background: "var(--bg)" }}>
       <div className="max-w-5xl mx-auto px-6" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-10 text-center"
         >
           <span className="section-badge">
-            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "#00d4ff" }} />
+            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--accent-1)" }} />
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4" style={{ color: "var(--text-1)" }}>
             Let&apos;s Connect
           </h2>
-          <div className="h-px w-16 mx-auto" style={{ background: "linear-gradient(to right, #00d4ff, #6366f1)" }} />
+          <div className="h-px w-16 mx-auto" style={{ background: "linear-gradient(to right, var(--accent-1), var(--accent-2))" }} />
         </motion.div>
 
-        {/* CTA headline */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-12"
         >
-          <p className="text-lg md:text-xl" style={{ color: "#94a3b8" }}>
+          <p className="text-lg md:text-xl" style={{ color: "var(--text-2)" }}>
             Open to senior engineering roles,{" "}
-            <span className="text-white font-medium">AI-driven product teams</span>, and{" "}
-            <span className="text-white font-medium">consulting engagements</span>.
+            <span className="font-medium" style={{ color: "var(--text-1)" }}>AI-driven product teams</span>, and{" "}
+            <span className="font-medium" style={{ color: "var(--text-1)" }}>consulting engagements</span>.
           </p>
-          <p className="mt-2 text-sm" style={{ color: "#64748b" }}>
-            I typically respond within 24 hours.
-          </p>
+          <p className="mt-2 text-sm" style={{ color: "var(--text-3)" }}>I typically respond within 24 hours.</p>
         </motion.div>
 
         {/* Contact cards */}
@@ -111,8 +80,8 @@ export default function Contact() {
                   href={c.href}
                   target={c.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="glass glass-hover rounded-2xl p-5 flex items-center gap-4 no-underline"
-                  style={{ display: "flex" }}
+                  className="glass glass-hover rounded-2xl p-5 flex items-center gap-4"
+                  style={{ display: "flex", textDecoration: "none" }}
                 >
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
@@ -121,10 +90,10 @@ export default function Contact() {
                     <c.icon size={18} style={{ color: c.color }} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs mb-0.5 uppercase tracking-wider" style={{ color: "#64748b" }}>{c.label}</p>
-                    <p className="text-sm font-medium text-white truncate">{c.value}</p>
+                    <p className="text-xs mb-0.5 uppercase tracking-wider" style={{ color: "var(--text-3)" }}>{c.label}</p>
+                    <p className="text-sm font-medium truncate" style={{ color: "var(--text-1)" }}>{c.value}</p>
                   </div>
-                  <ExternalLink size={14} style={{ color: "#64748b" }} />
+                  <ExternalLink size={14} style={{ color: "var(--text-3)" }} />
                 </a>
               ) : (
                 <div className="glass rounded-2xl p-5 flex items-center gap-4">
@@ -135,8 +104,8 @@ export default function Contact() {
                     <c.icon size={18} style={{ color: c.color }} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs mb-0.5 uppercase tracking-wider" style={{ color: "#64748b" }}>{c.label}</p>
-                    <p className="text-sm font-medium text-white truncate">{c.value}</p>
+                    <p className="text-xs mb-0.5 uppercase tracking-wider" style={{ color: "var(--text-3)" }}>{c.label}</p>
+                    <p className="text-sm font-medium truncate" style={{ color: "var(--text-1)" }}>{c.value}</p>
                   </div>
                 </div>
               )}
@@ -144,7 +113,7 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* Big CTA button */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -157,8 +126,8 @@ export default function Contact() {
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white text-sm"
             style={{
-              background: "linear-gradient(135deg, #00d4ff 0%, #6366f1 100%)",
-              boxShadow: "0 0 40px rgba(0,212,255,0.25)",
+              background: "linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%)",
+              boxShadow: "0 0 40px rgba(0,212,255,0.2)",
             }}
           >
             <Mail size={16} />
