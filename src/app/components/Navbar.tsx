@@ -14,16 +14,28 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [open, setOpen]           = useState(false);
-  const [mounted, setMounted]     = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
+  const [open, setOpen]             = useState(false);
+  const [mounted, setMounted]       = useState(false);
+  const [active, setActive]         = useState("");
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => { setMounted(true); }, []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); }),
+      { threshold: 0.35 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   const isDark = resolvedTheme === "dark";
@@ -50,22 +62,28 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium transition-colors duration-200 relative group"
-              style={{ color: "var(--text-2)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-1)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-2)")}
-            >
-              {l.label}
-              <span
-                className="absolute -bottom-0.5 left-0 h-px w-0 transition-all duration-300 group-hover:w-full"
-                style={{ background: "var(--accent-1)" }}
-              />
-            </a>
-          ))}
+          {links.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm font-medium transition-colors duration-200 relative group"
+                style={{ color: isActive ? "var(--text-1)" : "var(--text-2)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "var(--text-1)" : "var(--text-2)")}
+              >
+                {l.label}
+                <span
+                  className="absolute -bottom-0.5 left-0 h-px transition-all duration-300"
+                  style={{
+                    background: "var(--accent-1)",
+                    width: isActive ? "100%" : "0%",
+                  }}
+                />
+              </a>
+            );
+          })}
 
           {/* Theme toggle */}
           {mounted && (
