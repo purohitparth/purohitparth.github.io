@@ -65,9 +65,14 @@ function TypingText() {
 }
 
 const floatingBadges = [
-  { label: "React 18 ⚛️", color: "#00d4ff", delay: 0,   position: { top: "-12px", right: "-20px" } },
-  { label: "Next.js 🚀",  color: "#6366f1", delay: 0.5, position: { bottom: "0px", left: "-20px" } },
-  { label: "AI / LLM 🤖", color: "#a855f7", delay: 1,   position: { top: "50%", right: "-24px" } },
+  { label: "React 18 ⚛️",    color: "#00d4ff", delay: 0,    position: { top: "-16px",  right: "-18px"  } },
+  { label: "Next.js 🚀",     color: "#6366f1", delay: 0.5,  position: { bottom: "-4px",left: "-24px"   } },
+  { label: "AI / LLM 🤖",    color: "#a855f7", delay: 1,    position: { top: "42%",    right: "-32px"  } },
+  { label: "Angular 🅰️",     color: "#e11d48", delay: 1.5,  position: { top: "8%",     left: "-28px"   } },
+  { label: "Spring Boot 🍃",  color: "#22c55e", delay: 2,    position: { bottom: "22%", right: "-36px"  } },
+  { label: "Node.js",        color: "#84cc16", delay: 2.5,  position: { bottom: "32%", left: "-24px"   } },
+  { label: "PostgreSQL 🐘",   color: "#38bdf8", delay: 3,    position: { top: "22%",    right: "-36px"  } },
+  { label: "TypeScript",     color: "#3b82f6", delay: 3.5,  position: { bottom: "8%",  right: "-28px"  } },
 ];
 
 export default function Hero() {

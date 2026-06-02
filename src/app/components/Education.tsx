@@ -38,6 +38,18 @@ const certs = [
     date: "Sep 2022",
     color: "#f59e0b",
   },
+  {
+    title: "AWS Partner: Cloud Economics Accreditation",
+    subtitle: "Amazon Web Services",
+    date: "Sep 2022",
+    color: "#f59e0b",
+  },
+  {
+    title: "AWS Certified Cloud Practitioner",
+    subtitle: "Foundational · Valid Dec 2024 – Dec 2027",
+    date: "Dec 2024",
+    color: "#f59e0b",
+  },
 ];
 
 const fadeUp = {
@@ -164,7 +176,7 @@ export default function Education() {
             >
               <div className="text-3xl mb-2">🏅</div>
               <p className="text-sm font-semibold text-white">Amazon Web Services</p>
-              <p className="text-xs mt-1" style={{ color: "#64748b" }}>2× Certified Cloud Professional</p>
+              <p className="text-xs mt-1" style={{ color: "#64748b" }}>4× AWS Certified Professional</p>
             </motion.div>
           </div>
         </div>
