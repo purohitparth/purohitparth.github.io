@@ -78,28 +78,27 @@ export default function Experience() {
   const [expanded, setExpanded] = useState<number | null>(0);
 
   return (
-    <section id="experience" className="py-28" style={{ background: "#05090f" }}>
+    <section id="experience" className="py-16" style={{ background: "var(--bg)" }}>
       <div className="max-w-5xl mx-auto px-6" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-10 text-center"
         >
           <span className="section-badge">
-            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "#00d4ff" }} />
+            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--accent-1)" }} />
             Work History
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4" style={{ color: "var(--text-1)" }}>
             Experience
           </h2>
-          <div className="h-px w-16 mx-auto" style={{ background: "linear-gradient(to right, #00d4ff, #6366f1)" }} />
+          <div className="h-px w-16 mx-auto" style={{ background: "linear-gradient(to right, var(--accent-1), var(--accent-2))" }} />
         </motion.div>
 
         {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
           <div
             className="absolute left-6 top-0 bottom-0 w-px hidden sm:block"
             style={{ background: "linear-gradient(to bottom, #00d4ff40, #6366f140, #a855f740, #f59e0b40, transparent)" }}
@@ -117,24 +116,18 @@ export default function Experience() {
                 {/* Dot */}
                 <div
                   className="absolute left-4 top-6 w-4 h-4 rounded-full hidden sm:flex items-center justify-center"
-                  style={{
-                    background: `${job.color}22`,
-                    border: `2px solid ${job.color}`,
-                    boxShadow: `0 0 12px ${job.color}60`,
-                  }}
+                  style={{ background: `${job.color}22`, border: `2px solid ${job.color}`, boxShadow: `0 0 12px ${job.color}60` }}
                 >
                   <div className="w-1.5 h-1.5 rounded-full" style={{ background: job.color }} />
                 </div>
 
                 {/* Card */}
                 <div className="glass glass-hover rounded-2xl overflow-hidden">
-                  {/* Card Header — clickable to expand */}
                   <button
                     className="w-full text-left p-6 flex items-start gap-4 cursor-pointer"
                     onClick={() => setExpanded(expanded === i ? null : i)}
                     aria-expanded={expanded === i}
                   >
-                    {/* Icon */}
                     <div
                       className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
                       style={{ background: `${job.color}15`, border: `1px solid ${job.color}30` }}
@@ -143,20 +136,8 @@ export default function Experience() {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h3 className="text-lg font-bold text-white">{job.role}</h3>
-                                                <span
-                          className="text-xs px-2 py-0.5 rounded-full font-medium"
-                          style={{
-                            background: `${job.color}18`,
-                            color: job.color,
-                            border: `1px solid ${job.color}30`,
-                          }}
-                        >
-                          {job.tag}
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm" style={{ color: "#94a3b8" }}>
+                      <h3 className="text-lg font-bold mb-1" style={{ color: "var(--text-1)" }}>{job.role}</h3>
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm" style={{ color: "var(--text-2)" }}>
                         <span className="font-semibold" style={{ color: job.color }}>{job.company}</span>
                         <span>·</span>
                         <span>{job.location}</span>
@@ -170,7 +151,7 @@ export default function Experience() {
                       transition={{ duration: 0.25 }}
                       className="shrink-0 mt-1"
                     >
-                      <ChevronDown size={18} style={{ color: "#64748b" }} />
+                      <ChevronDown size={18} style={{ color: "var(--text-3)" }} />
                     </motion.div>
                   </button>
 
@@ -184,10 +165,7 @@ export default function Experience() {
                         transition={{ duration: 0.35, ease: "easeInOut" }}
                         style={{ overflow: "hidden" }}
                       >
-                        <div
-                          className="px-6 pb-6"
-                          style={{ borderTop: `1px solid ${job.color}18` }}
-                        >
+                        <div className="px-6 pb-6" style={{ borderTop: `1px solid ${job.color}20` }}>
                           <ul className="mt-4 flex flex-col gap-3">
                             {job.highlights.map((h, hi) => (
                               <motion.li
@@ -196,7 +174,7 @@ export default function Experience() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: hi * 0.06 }}
                                 className="flex items-start gap-3 text-sm leading-relaxed"
-                                style={{ color: "#94a3b8" }}
+                                style={{ color: "var(--text-2)" }}
                               >
                                 <span
                                   className="mt-2 w-1.5 h-1.5 rounded-full shrink-0"

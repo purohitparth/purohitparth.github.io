@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: "#05090f", minHeight: "100vh" }}>
+    <main style={{ backgroundColor: "var(--bg)", minHeight: "100vh" }}>
       <Navbar />
       <Hero />
       <About />
@@ -17,8 +17,8 @@ export default function Home() {
       <Education />
       <Contact />
       <footer
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-        className="py-8 text-center text-slate-600 text-sm"
+        className="py-8 text-center text-sm"
+        style={{ borderTop: "1px solid var(--border-card)", color: "var(--text-3)" }}
       >
         <p>© 2025 Parth Purohit · Tampa, FL</p>
       </footer>
